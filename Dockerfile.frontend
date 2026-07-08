@@ -1,0 +1,16 @@
+FROM node:18-slim
+
+WORKDIR /app
+
+# 依存パッケージのインストール
+COPY frontend/package.json .
+RUN npm install
+
+# アプリケーションコピー
+COPY frontend/ .
+
+# ポート公開
+EXPOSE 3000
+
+# エントリーポイント
+CMD ["npm", "start"]
